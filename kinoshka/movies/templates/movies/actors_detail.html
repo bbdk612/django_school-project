@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/Detail.css' %}">{% endblock %}
+{% block title %} {{ object.name }} {% endblock %}
+{% block content %}
+	<main>
+		<div class="main__inner container">
+			<div class="poster">
+				<img src="{{ object.image.url }}" alt="{{ object.name }}">
+			</div>
+			<div class="description">
+				<div class="title">
+					<h1> {{ object.name }} </h1>
+				</div>
+				<div class="about_object">
+					<h2>О {{ object.name }}</h2>
+					<br>
+					<div class="chareters">
+						<span class="chareter"><b>Возраст</b>: {{ object.age }}</span>
+						<span class="chareter"><b>Режиссер</b>: 
+							{% for director in object.director.all %}
+								<a href="{{ director.get_absolute_url }}">{{ director.title }}</a>, 
+							{% endfor %}
+						</span>
+						<span class="chareter"><b>Актер</b>: 
+							{% for actor in object.actor.all %}
+								<a href="{{ actor.get_absolute_url }}">{{ actor.title }}</a>, 
+							{% endfor %}
+						</span>
+					</div>
+					<div class="bg-text">
+						{{ object.description }}
+					</div>
+				</div>
+				
+			
+			
+
+				
+			</div>
+		</div>
+	</main>
+
+
+{% endblock %}

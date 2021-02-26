@@ -1,0 +1,66 @@
+/*       New Movies        */
+
+.new__movies {
+	width: 100%;
+	display: flex;
+	overflow: auto;
+	padding: 10px;
+	background-color: #9fb8ad;	
+	border-radius: 10px;
+	/*color: #fb743e;*/
+
+}
+
+.new__movies {
+	scrollbar-color:  #c5d7bd #c5d7bd;
+}
+
+
+/*FOR CHROMIUM BROWSERS*/
+.new__movies::-webkit-scrollbar {
+	/*color: #c5d7bd;*/
+	background-color: #c5d7bd;
+}
+
+.new__movie {
+	padding-right: 3.5em;
+	/*width: 100%;*/
+}
+
+img.film {
+	max-width: 150px;
+	border-radius: 5px;
+}
+
+
+/*     Movie Categories    */
+
+.categories {
+	display: flex;
+	align-items: center;	
+	overflow: auto;
+	background-color: #9fb8ad;	
+	padding: 10px;
+	scrollbar-color: #c5d7bd #c5d7bd;
+	border-radius: 10px
+}
+
+.categories::-webkit-scrollbar {
+	/*color: #c5d7bd;*/
+	background-color: #c5d7bd;
+}
+
+.category {
+	background: #fdc830; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to left, #fdc830, #f37335); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to left, #fdc830, #f37335);
+  	border-radius: 15px;
+	min-width: 300px;
+	min-height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	font-size: x-large;
+	margin-right: 2em;
+}

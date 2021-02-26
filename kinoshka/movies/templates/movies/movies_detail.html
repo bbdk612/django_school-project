@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/Detail.css' %}">{% endblock %}
+{% block title %} {{ object.title }} {% endblock %}
+{% block content %}
+	<main>
+		<div class="main__inner container">
+			<div class="poster">
+				<img src="{{ object.poster.url }}" alt="Постер к фильму {{ object.title }}">
+			</div>
+			<div class="description">
+				<div class="title">
+					<h1> {{ object.title }} </h1>
+				</div>
+				<div class="about_object">
+					<h2>О фильме</h2>
+					<br>
+					<div class="chareters">
+						<span class="chareter"><b>Год производства</b>: {{ object.year }}</span>
+						<span class="chareter"><b>Слоган</b>: "<i>{{object.tagline}}"</i></span>
+						<span class="chareter"><b>Страна(ы)</b>: {{ object.country }} </span>
+						<span class="chareter"><b>Режиссеры</b>: 
+							{% for director in object.directors.all %}
+								<a href="{% url 'actors__detail' director.name %}">{{ director.name }}</a>, 
+							{% endfor %}
+						</span>
+						<span class="chareter"><b>Актеры</b>: 
+							{% for actor in object.actor.all %}
+								<a href="{% url 'actors__detail' actor.name %}">{{ actor.name }}</a>, 
+							{% endfor %}
+						</span>
+						<span class="chareter"><b>Жанры</b>: 
+							{% for genre in object.genre.all %}
+								{{ genre.name }}, 
+							{% endfor %}
+						</span>
+						<span class="chareter"><b>Бюджет</b>: ${{ object.budget }}</span>
+						<span class="chareter"><b>Сборы в США</b>: ${{object.fees_in_usa}}</span>
+						<span class="chareter"><b>Сборы в мире</b>: ${{ object.fees_in_world }}</span>
+					</div>
+					<div class="bg-text">
+						{{ object.description }}
+					</div>
+				</div>
+				
+			
+			
+
+				<div class="reviews">
+					<h2>Отзывы</h2>
+					<br>
+					<form action="{% url 'add__review' object.id %}" method="post" class='send'>
+						{% csrf_token %}
+
+						<input type="hidden" name="parent" id="contactparent">
+
+						<span>Ваше имя</span>
+						<input type="text" name="name">
+						<span>Ваш email</span>
+						<input type="email" name="email">
+						<span>Ваш отзыв о фильме</span>
+						<textarea name="message" id="contactcomment"></textarea>
+						<div class="buttons">
+							<button type="reset">Стереть все</button>
+							<button type="submit">Отправить</button>
+						</div>
+					</form>
+
+					
+					{% for review in object.get_reviews %}
+						<div class="review">
+							<div class="review__name"><b> {{ review.name }}</b> </div>
+							<div class="review__message"> {{ review.message }} </div>
+							<a href="#formReview" class="send_link" onclick="AddReview('{{ review.name }}', '{{ review.id }}')">Ответить</a>
+
+							{% for revi in review.reviewe_set.all %}
+							<div class="childs review">
+								<div class="review__name"> <b>{{revi.name}}</b> </div>
+								<div class="review__message"> {{revi.message}} </div>
+							</div>
+							{% endfor %}
+
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script>
+		function AddReview(name, id) {
+            document.getElementById("contactparent").value = id;
+            document.getElementById("contactcomment").innerText = `${name}, `
+        }
+	</script>
+
+{% endblock %}

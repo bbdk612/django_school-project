@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Raleway:wght@400;700&display=swap');
+
+*,
+body {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Raleway", sans-serif;
+	overflow: visible;
+}
+
+/******HEADER'S PART********/
+
+header {
+	width: 100%;
+	background-color: #383e56;
+	padding: 15px;
+}
+
+#a1 {
+	outline: none;
+	padding: 5px 10px;
+	border: 0;
+	border-radius: 5px;
+
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.header__inner {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+
+}
+
+.header__inner > h3 > a {
+	font-family: 'Press Start 2P', cursive;
+	color: #fb743e;
+	text-decoration: none;
+}
+
+
+.header__ul {
+	list-style-type: none;
+	display: flex;
+}
+
+.header__ul > li {
+	padding-left: 10px;
+}
+
+.header__li > a {
+	color: #fb743e;
+	text-decoration: none;
+}
+
+
+/********MAIN'S PART********/
+
+main {
+	width: 100%;
+	min-height: 100vh;
+	/*height: 1500px;*/
+	background-color: #9fb8ad
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #c5d7bd;
+}
+
+.name {
+	margin: 10px;
+	/*color: #fb743e;*/
+}
+
+
+/**********FOOTER***********/
+
+footer {
+	background-color: #383e56;
+	color: #fb743e;
+	width 100%;
+	padding:20px;
+}
+
+.footer__inner {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.footer__content-about {
+	display: flex;
+	flex-direction: column;	
+	justify-content: space-around
+}
+
+.footer__content-about > a {
+	color: #fb743e;
+	text-decoration: none;
+}
+
+.contacts {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.contact > a {
+	color: #fb743e;
+	text-decoration: none;
+}

@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	{% block css %}{% endblock %}
+	<title>{% block title %} Kinoshka {% endblock %} </title>
+</head>
+<body>
+	<header id="myHeader">
+		<div class="header__inner">
+			<h3><a href="{% url 'index' %}">Kinoshka</a></h3>
+			<form action="{% url 'search' %}" method="get">
+				<input type="search" name="q" id="a1" placeholder="Кино, Сериалы, Личности">
+				<input type="submit" value="Ок">
+			</form>
+		</div>
+	</header>
+
+	{% block content %}{% endblock %}
+
+	<footer>
+		<div class="footer__inner">
+			<div class="footer__content-about">
+				<a href="About.html">О сайте</a>
+				<a href="http://github.com">Страница проекта на github</a>
+			</div>
+			<div class="footer__content">
+				<h3 class="footer__h3">Контакты</h3>
+				<div class="contacts">
+					<div class="contact">
+						<a href="mailto:sircenkom239@gmail.com">sircenkom293@gmail.com</a>
+					</div>
+					<div class="contact">
+						<a href="https://vk.com/bbdk612">Мой VK</a>
+					</div>
+					<div class="contact">
+						<a href="github.com/bbdk612">Мой Github</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="{% static 'js/header.js' %}"></script>
+</body>
+</html>

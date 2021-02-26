@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/searched.css' %}">{% endblock %}
+
+
+{% block content %}
+	<main>
+		<div class="main__inner container">
+			<div class="searched">
+
+				<div class="title">
+					<h1>По запросу "Terminator", найдено:</h1>
+				</div>
+
+				<div class="movies">
+					<div class="type__searched">
+						<div class="movies">
+							<h3>Фильмы</h3>
+							<div class="movie">
+								{% for movie in movies_list %}
+								<img src="{{ movie.poster.url }}" alt="Постер {{ movie.title }}" class="poster">
+								<div class="text">
+									<div class="title"><a href="{{}}"><b>{{ movie.title }}</b></a></div>
+									<div class="description">
+										{{ movie.description }}
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="movies">
+					<h3>Актеры\Режиссеры</h3>
+					{% for actor in actors %}
+					<div class="movie">
+						<img src="{{ actor.image.url }}" alt="{{ actor.name }}" class="poster">
+						<div class="text">
+							<div class="title"><b>{{ actor.name }}</b></div>
+							<div class="description">{{ actor.description }}</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+{% block content %}
+	<main>
+		<div class="container">
+			<div class="name"><h2>Новинки</h2></div>
+			<section class="new__movies">
+				{% for movie in movies %}
+				<div class="new__movie">
+					<a href=" {{ movie.get_absolute_url }} "><img class="film" src="{{movie.poster.url}}"></a>
+				</div>
+				{% endfor %}
+			
+			{% for category in categories %}
+			</section>
+			<div class="name">
+				<h2>{{ category.name }}</h2>
+			</div>
+			<section class="new__movies">
+				{% for movie in category.movies_set.all %}
+				<div class="new__movie">
+					<a href=" {{ movie.get_absolute_url }} "><img class="film" src="{{movie.poster.url}}"></a>
+				</div>
+				{% endfor %}
+			</section>
+			{% endfor %}
+		</div>
+	</main>
+
+
+{% endblock %}
