@@ -87,6 +87,7 @@ class Movies(models.Model):
 
 
 class Reviewe(models.Model):
+	"""Отзывы/Рецензии"""
 	name = models.CharField('Имя пользователя', max_length=50)
 	email = models.EmailField()
 	message = models.TextField('Рецензия', max_length=50000)
