@@ -7,6 +7,7 @@ from .models import Movies, Category, Actors
 from .forms import RevieweForm
 
 def index(request):
+	"""Контроллер для нчатльной страницы"""
 	template = 'index.html'
 	movies = Movies.objects.filter(draft=False)[:10][::-1]
 	category = Category.objects.all()[:5]
@@ -14,15 +15,17 @@ def index(request):
 	return render(request, template, context)
 
 class MovieDetail(DetailView):
+	"""Контроллер для детального представления модели Movie"""
 	model = Movies
 	slug_field = 'url'
 
 class ActorsDetail(DetailView):
+	"""Контроллер для детального представления модели Actors"""
 	model = Actors
 	slug_field = 'name'
 
 class AddReview(View):
-	"""docstring for AddReview"""
+	"""Контроллер для добавления комментариев на сайт"""
 	def post(self, request, pk):
 		form = RevieweForm(request.POST)
 		movie = Movies.objects.get(id=pk)
@@ -35,7 +38,7 @@ class AddReview(View):
 		return redirect(movie.get_absolute_url())
 
 class SearchView(ListView):
-	# template_name = 'searched.html'
+	"""Контроллер для пиоска фильмов на сайте"""
 
 
 	def get_queryset(self):
