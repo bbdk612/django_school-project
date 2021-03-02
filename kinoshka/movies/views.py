@@ -41,10 +41,12 @@ class SearchView(ListView):
 	def get_queryset(self):
 		
 		return Movies.objects.filter(
-			Q(title__icontains=self.request.GET.get('q'))|
-			Q(actor__name__icontains=self.request.GET.get('q'))|
-			# Q(actor__name__icontains=self.request.GET.get('q').lower())|
-			Q(directors__name__icontains=self.request.GET.get('q')))
+			Q(title__icontains=self.request.GET.get('q').title())|
+			Q(title__icontains=self.request.GET.get('q').lower())|
+			Q(actor__name__icontains=self.request.GET.get('q').title())|
+            Q(actor__name__icontains=self.request.GET.get('q').lower())|
+			Q(directors__name__icontains=self.request.GET.get('q').title())|
+            Q(directors__name__icontains=self.request.GET.get('q').lower())).distinct()
 
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
